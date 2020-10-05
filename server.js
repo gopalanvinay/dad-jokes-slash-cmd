@@ -10,12 +10,9 @@ app.use(express.static("public"));
 
 app.post('/', async (req, res) => {
   
-  const joke = await axios.get('https://icanhazdadjoke.com/slack')
+  const joke = await axios.get('https://icanhazdadjoke.com/slack');
+  delete joke.data.attachments[0].footer;
   return res.json(joke.data);
-  // console.log('RESULT')
-  // console.log(joke.data)
-  
-  
   
 })
 
